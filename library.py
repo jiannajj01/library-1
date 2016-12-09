@@ -42,10 +42,12 @@ def add_book(filename, isbn, title, author):
     # and the value {'title':title, 'author':author}
     # to the books object.
 
+    books[isbn] = {'title': title, 'author':author}
+
     # Finally, write code that writes the new data to the library
     # Do we need to return anything?
-    pass
-
+    with open(filename) as f:
+        json.dump({'students':students,'books':books}, f)
 
 def remove_book(filename, isbn):
     students, books = open_library(filename)
@@ -54,8 +56,6 @@ def remove_book(filename, isbn):
     # Write code to delete the book keyed by isbn in the space below
 
     # Now write code that saves the new version of the data to your library
-    pass
-
 
 def check_out(filename, isbn, s_id):
     students, books = open_library(filename)
